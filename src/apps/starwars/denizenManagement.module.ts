@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DenizenManagementComponent } from './denizenManagement.component';
 import { DenizenComponent } from './components';
-import { DenizensListComponent } from './denizensList.component';
-import { DenizenService } from './logic/DenizenService';
+import { DenizensListComponent } from './components';
+import { DenizenService } from './logic';
 import { denizenRouting, denizenRoutingProviders } from './denizenManagement.routes';
 import { DENIZEN_RESOLVER_PROVIDERS } from './denizenManagement.resolver';
 import { DenizenProviderFactory } from './denizenProviderFactory';
+import { ROI18NDirective, I18NDirective } from './directives';
 
 @NgModule({
 	imports: [
@@ -20,11 +21,11 @@ import { DenizenProviderFactory } from './denizenProviderFactory';
 	declarations: [
 		DenizensListComponent,
 		DenizenComponent,
-		DenizenManagementComponent
+		DenizenManagementComponent,
+		I18NDirective,
+		ROI18NDirective
 	],
 	exports: [
-		DenizensListComponent,
-		DenizenComponent
 	]
 })
 export class DenizenManagementModule {

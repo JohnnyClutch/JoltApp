@@ -1,26 +1,27 @@
-import { Utilities } from '../utils';
+import { Model } from './Model';
 
-export class Denizen {
+export class Denizen extends Model {
 	private static _idTrac: number = 1;
 
 	private _name: string;
-	private _birthDate: Date;
+	private _birthYear: string;
 	private _formattedStartDate: string;
 	private _homeWorld: string;
-	private _id: number;
 
 	constructor(json: any) {
-		this.id = Denizen._idTrac++;
+		super(json)
+		if (!this.id) {
+			this.id = Denizen._idTrac++;
+		}
 		this._name = json.name;
-		this._birthDate = json.birth_date ? new Date(json.birth_date) : new Date();
-		this._homeWorld = json.home_world;
+		this._birthYear = json.birth_year;
 	}
 
 	getSubmissionJson(): any {
 		return {
 			name: this._name,
-			birth_date: this._birthDate,
-			home_world: this._homeWorld
+			birth_year: this._birthYear,
+			home_world: this.homeWorldName
 		};
 	}
 
@@ -32,45 +33,23 @@ export class Denizen {
 		this._name = newName;
 	}
 
-	get homeWorld(): string {
+	set homeWorldName(newHomeWorld: string) {
+		this._homeWorld = newHomeWorld;
+	}
+
+	// thought about creating a planet object, but planets are big, and they've
+	// got a bunch of data I don't want to hold in memory unnecessarily.  Easy
+	// to add if  requirements expand (which they won't of course because this is not
+	// an ongoing app :-)
+	get homeWorldName(): string {
 		return this._homeWorld;
 	}
 
-	set homeWorld(newSubpackId: string) {
-		this._homeWorld = newSubpackId;
+	get birthYear(): string {
+		return this._birthYear;
 	}
 
-	get birthDate(): Date {
-		return this._birthDate;
-	}
-
-	set birthDate(newStartDate: Date) {
-		this._birthDate = newStartDate;
-	}
-
-	private formatDate(dt: Date): string {
-		let formatted: string = '';
-		if (dt) {
-			formatted =
-				`${dt.getFullYear()}-${Utilities.padNumber(dt.getMonth() + 1, 2)}` +
-					`-${Utilities.padNumber(dt.getDate(), 2)}T12:00:00`;
-		}
-		return formatted;
-	}
-
-	private formatDisplayDate(dt: Date): string {
-		let formatted: string = '';
-		if (dt) {
-			formatted = `${Utilities.padNumber(dt.getMonth() + 1, 2)}/${Utilities.padNumber(dt.getDate(), 2)}/${dt.getFullYear()}`;
-		}
-		return formatted;
-	}
-
-	get id(): number {
-		return this._id;
-	}
-
-	set id(newId: number) {
-		this._id = newId;
+	set birthYear(newBirthYear: string) {
+		this._birthYear = newBirthYear;
 	}
 }

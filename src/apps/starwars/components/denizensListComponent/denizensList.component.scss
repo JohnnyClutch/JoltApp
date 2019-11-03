@@ -6,17 +6,11 @@
 	display: flex;
 }
 
-.denizen-list-footer {
-	display: flex;
-}
-
 .denizen-table-scroll {
 	height: calc(100vh - 315px);
 	overflow: auto;
 	background-color: white;
-	border-right: 1px solid darkgray;
-	border-left: 1px solid darkgray;
-	border-bottom: 1px solid darkgray;
+	border: 1px solid darkgray;
 }
 
 .clickable {

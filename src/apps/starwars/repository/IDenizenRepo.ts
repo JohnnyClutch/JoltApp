@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { Denizen } from '../models/Denizen';
+import { Denizen, PageInfo } from '../models';
 
 export abstract class IDenizenRepo {
-	abstract getDenizens(): Observable<Denizen[]>;
+	abstract getDenizens(): Observable<PageInfo<Denizen>>;
 }

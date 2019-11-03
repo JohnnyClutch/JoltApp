@@ -1,37 +1,28 @@
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { RequestOptions, Headers, Response } from '@angular/http';
-import { Denizen } from '../models';
+import { Denizen, PageInfo } from '../models';
 import { IDenizenRepo } from './IDenizenRepo';
-import { BasicAuthHttp, CachedRecord, I18NService, PageInfo, SearchOptions, UrlPath, Utilities }
-	from '../../../common/cms-angular/shared';
 
 @Injectable()
 export class TestDenizenRepo extends IDenizenRepo {
-	private options: RequestOptions;
-	private _denizens: Denizen[] = [];
+	private pageInfo: PageInfo<Denizen>;
 
 	constructor() {
 		super();
 		this.createTestData();
-
-		let headers: Headers = new Headers();
-		headers.append('Content-Type', 'application/json; charset=UTF-8');
-		this.options = new RequestOptions({
-			headers: headers
-		});
 	}
 
-	getDenizens(): Observable<Denizen[]> {
-		let servable: Observable<Denizen[]> = new Observable<Denizen[]>(resolver => {
-			resolver.next(this._denizens);
+	getDenizens(): Observable<PageInfo<Denizen>> {
+		let servable: Observable<PageInfo<Denizen>> = new Observable<PageInfo<Denizen>>(resolver => {
+			resolver.next(this.pageInfo);
 			resolver.complete();
 		});
 		return servable;
 	}
 
 	createTestData(): void {
+		this.pageInfo = new PageInfo<Denizen>();
+
 		let testResponse: any = {
 			"count": 3, 
 			"next": null, 
@@ -155,7 +146,7 @@ export class TestDenizenRepo extends IDenizenRepo {
 
 		testResponse.results.forEach(
 			(json: any) => {
-				this._denizens.push(new Denizen(json));
+				this.pageInfo.results.push(new Denizen(json));
 			}
 		);
 	}

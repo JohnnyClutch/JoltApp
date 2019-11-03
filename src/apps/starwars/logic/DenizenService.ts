@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Denizen } from '../models';
+import { Denizen, PageInfo } from '../models';
 import { IDenizenRepo } from '../repository';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class DenizenService {
 	) {
 	}
 
-	getDenizens(): Observable<Denizen[]> {
+	getDenizens(): Observable<PageInfo<Denizen>> {
 		return this._denizenRepo.getDenizens();
 	}
 }

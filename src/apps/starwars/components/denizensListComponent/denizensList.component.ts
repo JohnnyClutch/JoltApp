@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { Denizen } from './models';
-import { DenizenService } from './logic';
-import { I18NService } from './directives';
+import { Denizen, PageInfo } from '../../models';
+import { DenizenService } from '../../logic';
+import { I18NService } from '../../directives';
 
 @Component({
 	selector: 'denizen-list',
@@ -16,14 +16,13 @@ import { I18NService } from './directives';
 export class DenizensListComponent implements OnInit {
 
 	private _loadingResults: boolean;
-	private _denizens: Denizen[];
+	private _pageInfo: PageInfo<Denizen>;
 	private _errorMessage: string;
 
 	constructor(
 		private denizenService: DenizenService,
 		private i18nService: I18NService
 	) {
-
 	}
 
 	ngOnInit(): void {
@@ -34,13 +33,13 @@ export class DenizensListComponent implements OnInit {
 		return denizen.id;
 	}
 
-	private handleNavigationResponse = (denizens: Denizen[]): void => {
-		this.denizens = denizens;
+	private handleNavigationResponse = (pageInfo: PageInfo<Denizen>): void => {
+		this.pageInfo = pageInfo;
 		this.loadingResults = false;
 	}
 
 	private handleNavigationError = (errorResponse: any): void => {
-		this._errorMessage = this.i18nService.getMessage('denizens.serverError.generic');
+		this._errorMessage = this.i18nService.getMessage('pageInfo.serverError.generic');
 		this.loadingResults = false;
 	}
 
@@ -52,14 +51,15 @@ export class DenizensListComponent implements OnInit {
 		this._loadingResults = newLoadingResults;
 	}
 
-	get denizens(): Denizen[] {
-		return this._denizens;
+	get pageInfo(): PageInfo<Denizen> {
+		return this._pageInfo;
 	}
 
-	set denizens(newDenizens: Denizen[]) {
-		this._denizens = newDenizens;
+	set pageInfo(newPageInfo: PageInfo<Denizen>) {
+		this._pageInfo = newPageInfo;
 	}
 
+	// Would be much more elaborate with error handling
 	get errorMessage(): string {
 		return this._errorMessage;
 	}

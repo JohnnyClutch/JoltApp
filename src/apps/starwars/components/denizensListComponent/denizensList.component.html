@@ -1,15 +1,15 @@
 <div class="denizen-list-content">
 	<div class="denizens-header">
-		<div class="denizens-header-text">Star Wars Characters</div>
+		<h2 [ro-i18n] eikey="denizens.titles.listPageTitle"></h2>
 	</div>
 	<div class="denizen-list">
 		<div class="denizens-container">
 			<div class="denizen-table-scroll">
-				<div *ngFor="let denizen of denizensList; let idx=index;"
+				<div *ngFor="let denizen of pageInfo?.results; let idx=index;"
 					class="sw-hit-container"
 					id="sw-hit-{{ idx }}"
 				>
-					<denizen denizen="denizen">
+					<denizen [denizen]="denizen">
 					</denizen>
 				</div>
 			</div>

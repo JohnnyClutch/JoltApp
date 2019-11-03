@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Denizen } from '../models';
+import { Denizen } from '../../models';
+import { I18NService } from '../../directives';
 
 @Component({
 	selector: 'denizen',
@@ -13,7 +14,7 @@ export class DenizenComponent {
 
 	private _denizen: Denizen;
 
-	constructor() {
+	constructor(private i18nService: I18NService) {
 	}
 
 	@Input('denizen') set denizen(denizen: Denizen) {

@@ -2,8 +2,8 @@
 	<div id="sw-title-{{ denizen.id }}" class="sw-hit-cell denizen-name">
 		<div title="{{ denizen.name }}">{{ denizen.name }} <span *ngIf="!denizen.active"></span></div>
 	</div>
-	<div id="sw-birth-date-{{ denizen.id }}" class="sw-hit-cell denizen-bdate" title="{{ denizen.formattedBirthDate }}">{{ denizen.formattedBirthDate }}</div>
-	<div id="sw-home-world-{{ denizen.id }}" class="sw-hit-cell denizen-home-world">{{ denizen.homeWorld }}</div>
+	<div id="sw-birth-date-{{ denizen.id }}" class="sw-hit-cell denizen-bdate" title="{{ denizen.formattedBirthDate }}">{{ denizen.birthYear }}</div>
+	<div id="sw-home-world-{{ denizen.id }}" class="sw-hit-cell denizen-home-world">{{ denizen.homeWorldName }}</div>
 	<div class="sw-tools-cell" id="sw-tools-{{ denizen.id }}">
 		<div id="sw-command-fave-{{ denizen.id }}" [style.display]="none" class="denizen-edit-commands clickable" title="{{ i18nService.getMessage('denizens.commands.fave') }}" (click)="toggleFave(denizen)"><i *ngIf="!denizen.Faved" class="fa fa-heart-o"></i><i *ngIf="denizen.Faved" class="fa fa-heart-o"></i></div>
 	</div>

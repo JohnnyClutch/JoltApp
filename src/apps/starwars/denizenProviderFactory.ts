@@ -18,7 +18,7 @@ export class DenizenProviderFactory
 		repoFactory.addProviderTypes(dependencies, useTest);
 
 		let logicFactory: LogicProviderFactory = new LogicProviderFactory();
-		logicFactory.addProviderTypes(dependencies, useTest);
+		logicFactory.addProviderTypes(dependencies);
 
 		return dependencies;
 	}
