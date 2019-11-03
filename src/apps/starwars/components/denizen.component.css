@@ -1,0 +1,19 @@
+.denizen-name {
+	width: 17%;
+	min-width: 80px;
+}
+
+.denizen-world {
+	width: 33%;
+	min-width: 261px;
+}
+
+.denizen-birthdate {
+	width: 10%;
+	min-width: 98px;
+}
+
+.denizen-controls {
+	width: 10%;
+	min-width: 76px;
+}

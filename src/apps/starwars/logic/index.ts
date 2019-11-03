@@ -1,0 +1,1 @@
+export { DenizenService } from './DenizenService';

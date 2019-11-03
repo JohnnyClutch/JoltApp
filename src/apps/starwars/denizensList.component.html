@@ -1,0 +1,21 @@
+<div class="denizen-list-content">
+	<div class="denizens-header">
+		<div class="denizens-header-text">Star Wars Characters</div>
+	</div>
+	<div class="denizen-list">
+		<div class="denizens-container">
+			<div class="denizen-table-scroll">
+				<div *ngFor="let denizen of denizensList; let idx=index;"
+					class="sw-hit-container"
+					id="sw-hit-{{ idx }}"
+				>
+					<denizen denizen="denizen">
+					</denizen>
+				</div>
+			</div>
+			<div class="denizen-list-footer">
+				<div class="sw-error-condition">{{ errorMessage }} </div>
+			</div>
+		</div>
+	</div>
+</div>

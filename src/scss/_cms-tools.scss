@@ -1,0 +1,316 @@
+/* CMS Tools specific CSS with Overrides */
+
+.cms-tools-specific-overrides-css {
+	
+}
+
+body {
+	font-weight: 400;
+}
+
+/* Login page */
+
+.flex-center {
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+.login-page header h3,
+.login-page img {
+    float: left;
+}
+
+.login-page header h3 {
+	padding-top: 5px;
+	padding-left: 6px;
+}
+
+.widget-login-info {
+    float: left;
+    line-height: 1.3rem;
+    width: 100%;
+	padding-bottom: 20px;
+	padding-top: 12px;
+}
+
+.widget-login-info span {
+	font-style: italic;	
+}
+
+.error-block {
+	display: inherit;
+	margin-top: 20px;
+}
+
+/* Navbar */
+
+.navbar {
+	max-height: 50px;
+}
+
+.navbar-collapse,
+.navbar-dashboard {
+    background-color: #63a8dd;
+}
+
+.navbar-form-sm {
+	padding: 11px 20px 10.5px 1rem;
+}
+
+.navbar-form .input-group {
+	width: 205px !important;
+}
+
+.navbar-form.navbar-form-sm .form-control {
+	font-size: 13px;
+	padding: 0.275rem 0.75rem !important;
+	border-radius: 2px;
+}
+
+.navbar-form.navbar-form-sm .input-group > .input-group-addon i {
+	vertical-align: initial !important;
+}
+
+.page-controls {
+    right: 0 !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.header-brand {
+    display: inline-flex;
+}
+
+.header-title {
+	color: #F9F9F9;
+	display: inline-block;
+	font-size: 24px;
+	padding-left: 10px;
+	padding-top: 6px;
+}
+
+.app-title {
+    color: #f9f9f9;
+    font-size: 18px;
+    font-weight: 400;
+	letter-spacing: 1px;
+}
+
+.header-brand img {
+    margin-top: 5px;
+}
+
+.navbar-nav li {
+	float: left;
+}
+
+.navbar-dashboard .navbar-nav > li > a,
+.crowd-name,
+.header-separator {
+    color: #f9f9f9;
+}
+
+.navbar-dashboard .navbar-nav > li > a,
+.crowd-name {
+    padding: 15px 14px 14px 14px !important;
+}
+
+.crowd-name {
+	letter-spacing: 1px;
+}
+
+.header-separator {
+    padding: 14px 0 0 0;
+}
+
+/* Sidebar style to slide over instead of shifting entire page */
+
+.sidebar-nav {
+	font-size: 14px;
+}
+
+.sidebar {
+	top: 50px !important;
+	z-index: 0 !important;
+	transition: all 0.3s ease 0s;
+	border-right: 1px solid #e4e4e4;
+	width: 225px;
+}
+
+.sidebar:hover {
+	z-index: 5!important;
+	transition: 500ms .8s;
+}
+
+.nav-collapsed .sidebar {
+	top: 50px !important;
+	z-index: 0 !important;
+}
+
+.nav-collapsed .page-controls,
+.nav-static .page-controls {
+	margin-left: 0 !important;
+}
+
+.nav-slide .page-controls {
+    margin-left: 0;
+    left: 0;
+}
+
+/* Content Wrap */
+
+.content-wrap {
+	position: absolute !important;
+	left: 0 !important;
+	width: calc(100vw - 50px);
+	top: 50px;
+	height: calc(100vh - 78px);
+	overflow: hidden;
+	border-left: 1px solid #e4e4e4;
+}
+
+.content {
+    padding: 15px !important;
+	background-color: #F9F8F8;
+}
+
+
+/* end menu slide over */
+
+/*App Launcher */
+
+.cms-tools {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	margin: 75px 25% 0 25%;
+}
+
+.launch-vehicle {
+	max-height: calc(100vh - 92px);
+	overflow-y: auto;
+}
+
+.cms-tools .app-button {
+	width: 300px;
+	margin-right: 15px;
+}
+
+/* Pace activity animation - moves to right instead of left */
+.pace .pace-activity {
+	left: auto !important;
+	right: 15px !important;
+	top: 10px;
+        
+}
+
+.pace .pace-progress {
+	top: 0;
+	height: 8px;
+	background: #F5A623;
+	z-index: 2000;
+	width: calc(100vw - 60px);
+}
+
+/* footer */
+
+.page-footer {
+    background: #fff none repeat scroll 0 0;
+    border-top: 1px solid #ddd;
+    bottom: 0;
+    color: #343434;
+    display: flex;
+    font-size: 12px;
+    height: 32px;
+    letter-spacing: 1px;
+    padding: 7px 13px 0 25px;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.current-utc-time {
+    float: right;
+}
+
+.page-footer .footer-data {
+	font-weight: 600;
+	padding-left: 4px;
+	padding-right: 20px;
+	color: #575757;
+}
+
+.login-page .page-footer {
+	margin-bottom: 0;
+	text-align: left;
+}
+
+.sortable {
+  background: url(/assets/images/sortable.svg) no-repeat center right 5px;
+  background-size: 12px;
+}
+
+.ascending {
+  background: url(/assets/images/select-up.svg) no-repeat center right 5px;
+}
+
+.descending {
+  background: url(/assets/images/select-down.svg) no-repeat center right 5px;
+}
+
+
+/* bootstrap overrides */
+
+.btn-sm, .btn-group-sm > .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 0.2rem;
+}
+
+.footer-times {
+	display: flex;
+	margin-left: auto;
+}
+
+.footer-time-label {
+	margin-right: 12px;
+}
+
+.footer-time {
+	margin-right: 20px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 599px) {
+
+.cms-tools {
+	margin: 75px 0 0 0;
+}
+
+}
+
+@media screen and (min-width: 600px) and (max-width: 854px) {
+
+.cms-tools {
+	margin: 75px 10% 0 10%;
+}
+
+}
+
+@media screen and (min-width: 855px) and (max-width: 1023px) {
+
+.cms-tools {
+	margin: 75px 15% 0 15%;
+}
+
+}
+
+@media screen and (max-height: 900px) {
+
+.cms-tools {
+	margin: 30px 15% 0 15%;
+}
+
+}

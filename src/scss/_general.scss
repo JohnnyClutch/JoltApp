@@ -1,0 +1,34 @@
+
+/**
+* if set to device-width ie10 built-in scrollbar overflows content. Fix it as of here
+* http://stackoverflow.com/questions/17045132/scrollbar-overlay-in-ie10-how-do-you-stop-that-might-be-bootstrap
+*/
+@-ms-viewport{
+  width: auto;
+}
+
+html, body{
+  height: 100%;
+}
+
+body{
+  font-weight: $font-weight-base;
+  overflow-x: hidden;
+}
+
+th{
+  font-weight: $font-weight-semi-bold;
+}
+
+.spin-animation {
+	display: block;
+    z-index: 2000;
+    top: 6px;
+    border: solid 2px transparent;
+    border-radius: 10px;
+    -webkit-animation: pace-spinner 400ms linear infinite;
+    -moz-animation: pace-spinner 400ms linear infinite;
+    -ms-animation: pace-spinner 400ms linear infinite;
+    -o-animation: pace-spinner 400ms linear infinite;
+    animation: pace-spinner 400ms linear infinite;
+}
