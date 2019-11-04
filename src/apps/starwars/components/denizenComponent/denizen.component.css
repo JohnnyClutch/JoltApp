@@ -1,19 +1,25 @@
-.denizen-name {
-	width: 17%;
-	min-width: 80px;
+.denizen-container {
+	font-size: 16px;
+	line-height: 29px;
 }
 
-.denizen-world {
-	width: 33%;
-	min-width: 261px;
+.denizen-container:first-child {
+	margin-top: 40px;
 }
 
-.denizen-birthdate {
-	width: 10%;
-	min-width: 98px;
+.denizen-label {
+	font-weight: 800;
+	width: 45%;
 }
+
+.sw-hit-cell {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+}
+
 
 .denizen-controls {
-	width: 10%;
-	min-width: 76px;
+	width: 25%;
+	margin-left: 5px;
 }
