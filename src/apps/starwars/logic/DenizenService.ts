@@ -40,14 +40,20 @@ export class DenizenService {
 	removeFavoriteDenizen(denizen: Denizen): void {
 		// using name since it's unique in the set of results, would use a guid or id if available
 		this._favoriteDenizens.remove(denizen.name);
+		this.storeFavoriteDenizensToLocalStorage();
 	}
 
 	addFavoriteDenizen(denizen: Denizen) {
 		this._favoriteDenizens.put(denizen.name, denizen);
+		this.storeFavoriteDenizensToLocalStorage();
 	}
 
 	get favorites(): any {
 		return this._favoriteDenizens.values;
+	}
+
+	get numFavorites(): number {
+		return this._favoriteDenizens.count;
 	}
 
 	private restoreFavoriteDenizensFromLocalStorage(): void {

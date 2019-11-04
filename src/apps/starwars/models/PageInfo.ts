@@ -113,7 +113,7 @@ export class PageInfo<T extends Model> {
 	set searchTerm(newSearchTerm: string) {
 		this._searchTerm = newSearchTerm;
 		if (newSearchTerm && newSearchTerm.length > 0) {
-			this._url = baseUrl + '/?search=' + newSearchTerm;
+			this._url = `${baseUrl}/?search=${newSearchTerm}`;
 		} else {
 			this._url = baseUrl;
 			this._searchTerm = null;

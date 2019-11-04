@@ -15,6 +15,10 @@
 					placeholder="{{ i18nService.getMessage('denizens.placeholders.search') }}"
 				>
 			</div>
+			<div class="favs-count-container">
+				<div class="favs-count-label" [i18n] eikey="denizens.labels.favsCount" [args]="{ 'count': denizenService?.numFavorites }" [count]="denizenService?.numFavorites"></div>
+				<div *ngIf="denizenService.numFavorites > 0" class="view-favs-label clickable" [i18n] eikey="denizens.labels.viewFavs" (click)="routeToFavorites()"></div>
+			</div>
 		</div>
 	</div>
 	<div class="denizen-list">
@@ -24,7 +28,7 @@
 					class="sw-hit-container"
 					id="sw-hit-{{ idx }}"
 				>
-					<denizen [denizen]="denizen">
+					<denizen [denizen]="denizen" (favorited)="handleFavoriteClicked($event)">
 					</denizen>
 				</div>
 			</div>

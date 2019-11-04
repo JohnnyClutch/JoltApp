@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DenizenManagementComponent } from './denizenManagement.component';
 import { DenizenComponent } from './components';
 import { DenizensListComponent } from './components';
+import { FavsListComponent } from './components';
 import { DenizenService } from './logic';
 import { denizenRouting, denizenRoutingProviders } from './denizenManagement.routes';
 import { DENIZEN_RESOLVER_PROVIDERS } from './denizenManagement.resolver';
@@ -20,6 +21,7 @@ import { ROI18NDirective, I18NDirective } from './directives';
 	providers: DenizenProviderFactory.marshallProviders(),
 	declarations: [
 		DenizensListComponent,
+		FavsListComponent,
 		DenizenComponent,
 		DenizenManagementComponent,
 		I18NDirective,

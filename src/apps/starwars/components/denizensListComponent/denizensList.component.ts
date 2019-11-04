@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Denizen, PageInfo } from '../../models';
 import { DenizenService } from '../../logic';
@@ -22,12 +22,17 @@ export class DenizensListComponent implements OnInit {
 
 	constructor(
 		private denizenService: DenizenService,
-		private i18nService: I18NService
+		private i18nService: I18NService,
+		private router: Router
 	) {
 	}
 
-	private ngOnInit(): void {
+	ngOnInit(): void {
 		this.denizenService.getDenizens(this._pageInfo).subscribe(this.handleNavigationResponse, this.handleNavigationError);
+	}
+
+	private routeToFavorites(): void {
+		this.router.navigateByUrl('/app/faves');
 	}
 
 	private submitSearch(): void {
@@ -59,6 +64,14 @@ export class DenizensListComponent implements OnInit {
 	private handleNavigationError = (errorResponse: any): void => {
 		this._errorMessage = this.i18nService.getMessage('pageInfo.serverError.generic');
 		this.loadingResults = false;
+	}
+
+	private handleFavoriteClicked(ev: any): void {
+		if (ev.denizen && ev.denizen.favorited) {
+			this.denizenService.addFavoriteDenizen(ev.denizen);
+		} else {
+			this.denizenService.removeFavoriteDenizen(ev.denizen);
+		}
 	}
 
 	get loadingResults(): boolean {

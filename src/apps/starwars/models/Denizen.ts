@@ -16,13 +16,15 @@ export class Denizen extends Model {
 		}
 		this._name = json.name;
 		this._birthYear = json.birth_year;
+		this._favorited = json.favorited || false;
 	}
 
 	getSubmissionJson(): any {
 		return {
 			name: this._name,
 			birth_year: this._birthYear,
-			home_world: this.homeWorldName
+			home_world: this.homeWorldName,
+			favorited: this._favorited
 		};
 	}
 

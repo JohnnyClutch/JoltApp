@@ -13,6 +13,7 @@
 .search-controls {
 	display: flex;
 	margin-bottom: 5px;
+	width: 85%;
 }
 
 .search-terms {
@@ -26,14 +27,6 @@
 	min-width: 350px;
 	width: 350px;
 	z-index: 1;
-}
-
-.search-terms-glass {
-	font-size: 16px;
-	margin-top: 22px;
-	margin-left: 9px;
-	z-index: 2;
-	color: darkgray;
 }
 
 .denizen-table-scroll {
@@ -59,6 +52,11 @@
 	color: red;
 }
 
+.favs-count-container {
+	margin-left: auto;
+	display: flex;
+}
+
 .clickable {
 	cursor: pointer;
 }
@@ -75,6 +73,11 @@
 .sw-pagination li {
   /* hide numbers on small devices */
   display: none;
+}
+
+.view-favs-label {
+	color: #337ab7;
+	margin-left: 10px;
 }
 
 .sw-pagination li.button {
