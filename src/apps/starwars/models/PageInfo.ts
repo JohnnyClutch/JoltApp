@@ -1,5 +1,7 @@
 import { Model } from './Model';
 
+const baseUrl: string = 'https://swapi.co/api/people';
+
 export class PageInfo<T extends Model> {
 	private _nextPageLink: string;
 	private _prevPageLink: string;
@@ -8,8 +10,9 @@ export class PageInfo<T extends Model> {
 	private _results: T[] = [];                       // contains only the current, requested page
 	private _totalPages: number = 0;                  // the number of pages in the result set
 	private _totalResults: number = 0;                // the total number of hits in the current search
+	private _searchTerm: string;
 
-	constructor(private _url: string) {
+	constructor(private _url: string = baseUrl) {
 	}
 
 	pullNextPage(): void {
@@ -101,5 +104,19 @@ export class PageInfo<T extends Model> {
 
 	get url(): string {
 		return this._url;
+	}
+
+	get searchTerm(): string {
+		return this._searchTerm;
+	}
+
+	set searchTerm(newSearchTerm: string) {
+		this._searchTerm = newSearchTerm;
+		if (newSearchTerm && newSearchTerm.length > 0) {
+			this._url = baseUrl + '/?search=' + newSearchTerm;
+		} else {
+			this._url = baseUrl;
+			this._searchTerm = null;
+		}
 	}
 }

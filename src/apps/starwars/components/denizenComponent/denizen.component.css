@@ -3,8 +3,8 @@
 	line-height: 29px;
 }
 
-.denizen-container:first-child {
-	margin-top: 40px;
+.denizen-container:nth-child(2) {
+	margin-top: 30px;
 }
 
 .denizen-label {
@@ -22,4 +22,12 @@
 .denizen-controls {
 	width: 25%;
 	margin-left: 5px;
+}
+
+.sw-tools-cell {
+	display: flex;
+}
+
+.denizen-edit-commands {
+	margin-left: auto;
 }

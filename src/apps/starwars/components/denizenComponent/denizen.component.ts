@@ -14,9 +14,6 @@ export class DenizenComponent {
 
 	private _denizen: Denizen;
 
-	constructor(private i18nService: I18NService) {
-	}
-
 	@Input('denizen') set denizen(denizen: Denizen) {
 		this._denizen = denizen;
 	}
@@ -24,19 +21,11 @@ export class DenizenComponent {
 		return this._denizen;
 	}
 
+	constructor(private i18nService: I18NService) {
+	}
 
-//
-//	@Output()
-//	denizenClicked = new EventEmitter();
-//
-//	handleDenizenClicked(ev: any) {
-//		ev.stopPropagation();
-//		if (this.denizenClicked) {
-//			this.denizenClicked.emit({
-//				denizen: this._denizen,
-//				eventDetails: ev
-//			});
-//		}
-//	}
-//
+	handleDenizenClicked(ev: any, denizen: Denizen) {
+		ev.stopPropagation();
+		denizen.favorited = !denizen.favorited;
+	}
 }

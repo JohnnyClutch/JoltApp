@@ -6,6 +6,36 @@
 	display: flex;
 }
 
+.sw-favorite {
+	color: red;
+}
+
+.search-controls {
+	display: flex;
+	margin-bottom: 5px;
+}
+
+.search-terms {
+	padding-left: 35px;
+	max-height: 30px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-left: 5px;
+	border-color: darkgray;
+	min-width: 350px;
+	width: 350px;
+	z-index: 1;
+}
+
+.search-terms-glass {
+	font-size: 16px;
+	margin-top: 22px;
+	margin-left: 9px;
+	z-index: 2;
+	color: darkgray;
+}
+
 .denizen-table-scroll {
 	max-height: calc(100vh - 200px);
 	width: calc(100vw - 200px);

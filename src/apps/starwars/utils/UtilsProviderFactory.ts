@@ -1,11 +1,11 @@
 import { LocalStorageService } from './LocalStorageService';
-import { SessionStorageService, SessionStorageAccessor } from './SessionStorageService';
-import { MemoryStorageAccessor } from './MemoryStorageAccessor';
+import { SessionStorageService } from './SessionStorageService';
 
-export class ServicesProviderFactory {
+export class UtilsProviderFactory {
+
 	addProviderTypes(dependencies: any[]) {
-		dependencies.push({ provide: MemoryStorageAccessor, useClass: MemoryStorageAccessor });
-		dependencies.push({ provide: SessionStorageService, useClass: SessionStorageService });
 		dependencies.push({ provide: LocalStorageService, useClass: LocalStorageService });
+		dependencies.push({ provide: SessionStorageService, useClass: SessionStorageService });
 	}
 }
+

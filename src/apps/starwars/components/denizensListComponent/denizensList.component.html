@@ -2,6 +2,21 @@
 	<div class="denizens-header">
 		<h2 [ro-i18n] eikey="denizens.titles.listPageTitle"></h2>
 	</div>
+	<div class="search-container">
+		<div class="search-controls">
+			<div class="search-label" [i18n] eikey="denizens.labels.search"></div>
+			<div>
+				<input
+					name="sw-search-name"
+					[(ngModel)]="pageInfo.searchTerm"
+					(keyup)="submitSearch()"
+					type="text"
+					class="form-control search-terms"
+					placeholder="{{ i18nService.getMessage('denizens.placeholders.search') }}"
+				>
+			</div>
+		</div>
+	</div>
 	<div class="denizen-list">
 		<div class="denizens-container">
 			<div class="denizen-table-scroll">

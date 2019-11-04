@@ -7,6 +7,7 @@ export class Denizen extends Model {
 	private _birthYear: string;
 	private _formattedStartDate: string;
 	private _homeWorld: string;
+	private _favorited: boolean = false;
 
 	constructor(json: any) {
 		super(json)
@@ -51,5 +52,13 @@ export class Denizen extends Model {
 
 	set birthYear(newBirthYear: string) {
 		this._birthYear = newBirthYear;
+	}
+
+	get favorited(): boolean {
+		return this._favorited;
+	}
+
+	set favorited(newFavorited: boolean) {
+		this._favorited = newFavorited;
 	}
 }

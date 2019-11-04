@@ -8,7 +8,8 @@ import { I18NService } from '../../directives';
 	selector: 'denizen-list',
 	template: require('./denizensList.component.html'),
 	styles: [
-		require('./denizensList.component.scss').toString()
+		require('./denizensList.component.scss').toString(),
+		require('../../../../../node_modules/font-awesome/css/font-awesome.css')
 	],
 	encapsulation: ViewEncapsulation.None
 })
@@ -16,7 +17,7 @@ import { I18NService } from '../../directives';
 export class DenizensListComponent implements OnInit {
 
 	private _loadingResults: boolean;
-	private _pageInfo: PageInfo<Denizen> = new PageInfo<Denizen>('https://swapi.co/api/people');
+	private _pageInfo: PageInfo<Denizen> = new PageInfo<Denizen>();
 	private _errorMessage: string;
 
 	constructor(
@@ -25,7 +26,11 @@ export class DenizensListComponent implements OnInit {
 	) {
 	}
 
-	ngOnInit(): void {
+	private ngOnInit(): void {
+		this.denizenService.getDenizens(this._pageInfo).subscribe(this.handleNavigationResponse, this.handleNavigationError);
+	}
+
+	private submitSearch(): void {
 		this.denizenService.getDenizens(this._pageInfo).subscribe(this.handleNavigationResponse, this.handleNavigationError);
 	}
 

@@ -106,6 +106,7 @@ export class DenizenRepo extends IDenizenRepo {
 //
 
 	getDenizenHomeworld(denizen: Denizen): void {
+		// could also cache so that I don't have to repeat query
 		this.http.get(denizen.ext.homeworldLink).subscribe(
 			(rawResult) => {
 				let result: any = rawResult.json();

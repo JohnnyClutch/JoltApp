@@ -1,6 +1,7 @@
 import { DirectiveProviderFactory } from './directives/DirectiveProviderFactory';
 import { RepoProviderFactory } from './repository/RepoProviderFactory';
 import { LogicProviderFactory } from './logic/LogicProviderFactory';
+import { UtilsProviderFactory } from './utils/UtilsProviderFactory';
 
 export class DenizenProviderFactory
 {
@@ -19,6 +20,9 @@ export class DenizenProviderFactory
 
 		let logicFactory: LogicProviderFactory = new LogicProviderFactory();
 		logicFactory.addProviderTypes(dependencies);
+
+		let utilsFactory: UtilsProviderFactory = new UtilsProviderFactory();
+		utilsFactory.addProviderTypes(dependencies);
 
 		return dependencies;
 	}
