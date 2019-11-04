@@ -1,0 +1,24 @@
+<div class="denizen-list-content">
+	<div class="denizens-header">
+		<h2 [ro-i18n] eikey="denizens.titles.favsPageTitle"></h2>
+	</div>
+	<div class="favs-menu">
+		<div class="view-favs-label clickable" [i18n] eikey="denizens.labels.cancelFav" (click)="backToMain()"></div>
+	</div>
+	<div class="denizen-list">
+		<div class="denizens-container">
+			<div class="denizen-table-scroll">
+				<div *ngFor="let denizen of denizenService.favorites;"
+					class="sw-hit-container"
+				>
+					<denizen [denizen]="denizen" (favorited)="handleFavoriteClicked($event)">
+					</denizen>
+				</div>
+			</div>
+			<div class="denizen-list-footer">
+				<div class="sw-error-condition">{{ errorMessage }} </div>
+			</div>
+		</div>
+	</div>
+</div>
+

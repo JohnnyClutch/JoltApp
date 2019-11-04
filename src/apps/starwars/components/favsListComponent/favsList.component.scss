@@ -1,0 +1,44 @@
+.denizens-list-content {
+	width: 100%;
+}
+
+.denizens-header {
+	display: flex;
+}
+
+.favs-menu {
+	width: 100%;
+	height: 30px;
+	color: #337ab7;
+}
+
+.sw-favorite {
+	color: red;
+}
+
+.denizen-table-scroll {
+	max-height: calc(100vh - 200px);
+	width: calc(100vw - 200px);
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: white;
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px solid darkgray;
+}
+
+.sw-hit-container {
+	height: 140px;
+	min-width: 280px;
+	padding: 20px;
+	margin: 20px 30px;
+	border: 1px solid darkgray;
+}
+
+.sw-error-condition {
+	color: red;
+}
+
+.clickable {
+	cursor: pointer;
+}
