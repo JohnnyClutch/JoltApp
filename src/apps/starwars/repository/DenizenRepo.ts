@@ -8,7 +8,6 @@ import { IDenizenRepo } from './IDenizenRepo';
 import { I18NService } from '../directives';
 
 // would typically serve this from a class
-const denizensListPath = 'https://swapi.co/api/people'
 
 @Injectable()
 export class DenizenRepo extends IDenizenRepo {
@@ -28,22 +27,27 @@ export class DenizenRepo extends IDenizenRepo {
 	}
 
 	// get the denizens and do NOT wait for homeworlds to be retrieved
-	getDenizens(): Observable<PageInfo<Denizen>> {
+	getDenizens(pageInfo: PageInfo<Denizen>): Observable<PageInfo<Denizen>> {
 		let servable: Observable<PageInfo<Denizen>> = new Observable<PageInfo<Denizen>>(resolver => {
 
-			this.http.get(denizensListPath).subscribe(
+			this.http.get(pageInfo.url).subscribe(
 				(rawResult) => {
 					let result: any = rawResult.json();
 					if (result && result.results && Array.isArray(result.results)) {
-						let pageInfo: PageInfo<Denizen> = new PageInfo<Denizen>();
+						let pageDenizens: Denizen[] = [];
 						result.results.forEach(
 							(rawDenizen: any) => {
 								let denizen = new Denizen(rawDenizen);
-								pageInfo.results.push(denizen);
+								pageDenizens.push(denizen);
 								denizen.ext.homeworldLink = rawDenizen.homeworld;
 								this.getDenizenHomeworld(denizen);
 							}
 						);
+						pageInfo.results = pageDenizens;
+						pageInfo.totalResults = result.count;
+						pageInfo.nextPageLink = result.next;
+						pageInfo.prevPageLink = result.previous;
+
 						resolver.next(pageInfo);
 						resolver.complete();
 					} else {

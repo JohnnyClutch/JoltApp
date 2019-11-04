@@ -14,6 +14,16 @@
 				</div>
 			</div>
 			<div class="denizen-list-footer">
+<!--- 				I would put this in a directive, but this shows the basic functionality -->
+				<div class="pagination-pages">
+					<nav *ngIf="pageInfo.totalPages > 1">
+						<ul class="sw-pagination">
+							<li id="nav-prev-page" [ngClass]="{ clickable: pageInfo.pageIndex != 0, disabled: pageInfo.pageIndex == 0 }" class="page-item"><a (click)="retrievePrevPage()">&lt;</a></li>
+							<li id="nav-curr-page" class="sw-current-page"><div class="sw-curr-page-desc" [i18n] eikey="denizens.labels.currentPage" [args]="{ 'pageNum': pageInfo.currentPage, 'totalPages': pageInfo.totalPages }" [count]="pageInfo.totalPages"></div> </li>
+							<li id="nav-next-page" [ngClass]="{ clickable: pageInfo.currentPage != pageInfo.totalPages }" class="page-item" ><a (click)="retrieveNextPage()">&gt;</a></li>
+						</ul>
+					</nav>
+				</div>
 				<div class="sw-error-condition">{{ errorMessage }} </div>
 			</div>
 		</div>

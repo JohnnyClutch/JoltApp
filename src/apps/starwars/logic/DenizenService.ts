@@ -10,7 +10,7 @@ export class DenizenService {
 	) {
 	}
 
-	getDenizens(): Observable<PageInfo<Denizen>> {
-		return this._denizenRepo.getDenizens();
+	getDenizens(pageInfo: PageInfo<Denizen>): Observable<PageInfo<Denizen>> {
+		return this._denizenRepo.getDenizens(pageInfo);
 	}
 }

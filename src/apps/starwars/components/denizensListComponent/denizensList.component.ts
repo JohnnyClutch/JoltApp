@@ -16,7 +16,7 @@ import { I18NService } from '../../directives';
 export class DenizensListComponent implements OnInit {
 
 	private _loadingResults: boolean;
-	private _pageInfo: PageInfo<Denizen>;
+	private _pageInfo: PageInfo<Denizen> = new PageInfo<Denizen>('https://swapi.co/api/people');
 	private _errorMessage: string;
 
 	constructor(
@@ -26,7 +26,21 @@ export class DenizensListComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.denizenService.getDenizens().subscribe(this.handleNavigationResponse, this.handleNavigationError);
+		this.denizenService.getDenizens(this._pageInfo).subscribe(this.handleNavigationResponse, this.handleNavigationError);
+	}
+
+	private retrieveNextPage(): void {
+		if (this.pageInfo.hasNextPageLink) {
+			this.pageInfo.pullNextPage();
+			this.denizenService.getDenizens(this._pageInfo).subscribe(this.handleNavigationResponse, this.handleNavigationError);
+		}
+	}
+
+	private retrievePrevPage(): void {
+		if (this.pageInfo.hasPrevPageLink) {
+			this.pageInfo.pullPrevPage();
+			this.denizenService.getDenizens(this._pageInfo).subscribe(this.handleNavigationResponse, this.handleNavigationError);
+		}
 	}
 
 	private tracker(index: number, denizen: Denizen): number {
@@ -34,7 +48,6 @@ export class DenizensListComponent implements OnInit {
 	}
 
 	private handleNavigationResponse = (pageInfo: PageInfo<Denizen>): void => {
-		this.pageInfo = pageInfo;
 		this.loadingResults = false;
 	}
 

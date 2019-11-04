@@ -12,7 +12,7 @@ export class TestDenizenRepo extends IDenizenRepo {
 		this.createTestData();
 	}
 
-	getDenizens(): Observable<PageInfo<Denizen>> {
+	getDenizens(pageInfo: PageInfo<Denizen>): Observable<PageInfo<Denizen>> {
 		let servable: Observable<PageInfo<Denizen>> = new Observable<PageInfo<Denizen>>(resolver => {
 			resolver.next(this.pageInfo);
 			resolver.complete();
@@ -21,7 +21,7 @@ export class TestDenizenRepo extends IDenizenRepo {
 	}
 
 	createTestData(): void {
-		this.pageInfo = new PageInfo<Denizen>();
+		this.pageInfo = new PageInfo<Denizen>('www.jolt.com');
 
 		let testResponse: any = {
 			"count": 3, 
