@@ -10,12 +10,15 @@ import { denizenRouting, denizenRoutingProviders } from './denizenManagement.rou
 import { DENIZEN_RESOLVER_PROVIDERS } from './denizenManagement.resolver';
 import { DenizenProviderFactory } from './denizenProviderFactory';
 import { ROI18NDirective, I18NDirective } from './directives';
+import { OrderByPipe } from './filters';
+import { SortablejsModule } from 'angular-sortablejs';
 
 @NgModule({
 	imports: [
 		FormsModule,
 		CommonModule,
 		ReactiveFormsModule,
+		SortablejsModule,
 		denizenRouting
 	],
 	providers: DenizenProviderFactory.marshallProviders(),
@@ -25,6 +28,7 @@ import { ROI18NDirective, I18NDirective } from './directives';
 		DenizenComponent,
 		DenizenManagementComponent,
 		I18NDirective,
+		OrderByPipe,
 		ROI18NDirective
 	],
 	exports: [

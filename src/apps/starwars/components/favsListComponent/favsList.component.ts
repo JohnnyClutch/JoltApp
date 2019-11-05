@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Denizen, PageInfo } from '../../models';
 import { DenizenService } from '../../logic';
 import { I18NService } from '../../directives';
+import { Utilities } from '../../utils';
 
 @Component({
 	selector: 'favs-list',
@@ -17,12 +18,23 @@ import { I18NService } from '../../directives';
 export class FavsListComponent {
 
 	private _errorMessage: string;
+	private dragOptions: any;
+	private _favorites: Denizen[] = [];
+	private _favsSortConfig: any;
 
 	constructor(
 		private denizenService: DenizenService,
 		private i18nService: I18NService,
 		private router: Router
 	) {
+		this._favorites = this._favorites.concat(this.denizenService.favorites);
+		this._favsSortConfig = {
+			animation: 150,
+			onUpdate: (ev: any) => {
+				this.onFavesSorted(ev);
+			}
+		};
+
 	}
 
 	private handleFavoriteClicked(ev: any): void {
@@ -31,9 +43,20 @@ export class FavsListComponent {
 		} else {
 			this.denizenService.removeFavoriteDenizen(ev.denizen);
 		}
+		this._favorites = [];
+		this._favorites.concat(this.denizenService.favorites);
 		if (this.denizenService.numFavorites === 0) {
 			this.backToMain();
 		}
+	}
+
+	private onFavesSorted(ev: any): void {
+		this._favorites.forEach(
+			(denizen: Denizen, ndx: number) => {
+				denizen.favoriteNumber = ndx + 1;
+			}
+		);
+
 	}
 
 	private backToMain(): void {
@@ -47,5 +70,21 @@ export class FavsListComponent {
 
 	set errorMessage(newErrorMessage: string) {
 		this._errorMessage = newErrorMessage;
+	}
+
+	get favorites(): Denizen[] {
+		return this._favorites;
+	}
+
+	set favorites(newFavorites: Denizen[]) {
+		this._favorites = newFavorites;
+	}
+
+	get favsSortConfig(): any {
+		return this._favsSortConfig;
+	}
+
+	set favsSortConfig(newFavsSortConfig: any) {
+		this._favsSortConfig = newFavsSortConfig;
 	}
 }

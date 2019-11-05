@@ -7,11 +7,9 @@
 	</div>
 	<div class="denizen-list">
 		<div class="denizens-container">
-			<div class="denizen-table-scroll">
-				<div *ngFor="let denizen of denizenService.favorites;"
-					class="sw-hit-container"
-				>
-					<denizen [denizen]="denizen" (favorited)="handleFavoriteClicked($event)">
+			<div class="denizen-table-scroll" [sortablejs]="favorites" [sortablejsOptions]="favsSortConfig">
+				<div *ngFor="let denizen of favorites | sortBy: ['favoriteNumber'] trackBy:denizen?.favoriteNumber" class="fv-hit-container">
+					<denizen [denizen]="denizen" (favorited)="handleFavoriteClicked($event)" [show-favorite-number]="true">
 					</denizen>
 				</div>
 			</div>

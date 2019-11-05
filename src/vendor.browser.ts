@@ -14,6 +14,5 @@ import '@angular/router';
 import '@angularclass/hmr';
 // RxJS
 
-import 'jquery';
 import * as Moment from 'moment';
 import 'moment-timezone';

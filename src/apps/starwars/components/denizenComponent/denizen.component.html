@@ -1,5 +1,6 @@
 <div class="denizen-container">
 	<div class="sw-tools-cell">
+		<div *ngIf="denizen.favorited && showNumber" class="favorite-number" [i18n] eikey="denizens.labels.favoriteNumber" [args]="{ 'number': denizen.favoriteNumber }"></div>
 		<div class="denizen-edit-commands clickable" title="{{ i18nService.getMessage('denizens.commands.fave') }}" (click)="handleDenizenClicked($event, denizen)"><i *ngIf="!denizen.favorited" class="fa fa-heart-o"></i><i *ngIf="denizen.favorited" class="fa fa-heart sw-favorite"></i></div>
 	</div>
 	<div class="sw-hit-cell denizen-name">

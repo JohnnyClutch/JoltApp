@@ -13,12 +13,21 @@ import { I18NService } from '../../directives';
 export class DenizenComponent {
 
 	private _denizen: Denizen;
+	private _showNumber: boolean;
 
 	@Input('denizen') set denizen(denizen: Denizen) {
 		this._denizen = denizen;
 	}
 	get denizen(): Denizen {
 		return this._denizen;
+	}
+
+	@Input('show-favorite-number')
+	set showNumber(newShowNumber: boolean) {
+		this._showNumber = newShowNumber;
+	}
+	get showNumber(): boolean {
+		return this._showNumber;
 	}
 
 	@Output('favorited')

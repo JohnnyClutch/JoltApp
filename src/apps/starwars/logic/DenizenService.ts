@@ -44,6 +44,7 @@ export class DenizenService {
 	}
 
 	addFavoriteDenizen(denizen: Denizen) {
+		denizen.favoriteNumber = this.numFavorites + 1;
 		this._favoriteDenizens.put(denizen.name, denizen);
 		this.storeFavoriteDenizensToLocalStorage();
 	}
@@ -60,8 +61,11 @@ export class DenizenService {
 		let faves = this._localStorageService.getData(_favoritesKey);
 		if (faves) {
 			faves.forEach(
-				(fave: any) => {
+				(fave: any, ind: number) => {
 					let denizen: Denizen = new Denizen(fave);
+					if (!denizen.favoriteNumber) {
+						denizen.favoriteNumber = ind + 1;
+					}
 					this._favoriteDenizens.put(denizen.name, denizen);
 				}
 			);

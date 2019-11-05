@@ -27,12 +27,13 @@
 	border: 1px solid darkgray;
 }
 
-.sw-hit-container {
+.fv-hit-container {
 	height: 140px;
 	min-width: 280px;
 	padding: 20px;
 	margin: 20px 30px;
 	border: 1px solid darkgray;
+	cursor: move;
 }
 
 .sw-error-condition {

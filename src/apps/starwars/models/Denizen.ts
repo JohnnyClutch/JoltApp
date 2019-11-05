@@ -8,6 +8,7 @@ export class Denizen extends Model {
 	private _formattedStartDate: string;
 	private _homeWorld: string;
 	private _favorited: boolean = false;
+	private _favoriteNumber: number;
 
 	constructor(json: any) {
 		super(json)
@@ -16,7 +17,9 @@ export class Denizen extends Model {
 		}
 		this._name = json.name;
 		this._birthYear = json.birth_year;
+		this._homeWorld = json.home_world;
 		this._favorited = json.favorited || false;
+		this._favoriteNumber = json.favorite_number || 0;
 	}
 
 	getSubmissionJson(): any {
@@ -24,7 +27,8 @@ export class Denizen extends Model {
 			name: this._name,
 			birth_year: this._birthYear,
 			home_world: this.homeWorldName,
-			favorited: this._favorited
+			favorited: this._favorited,
+			favorite_number: this._favoriteNumber
 		};
 	}
 
@@ -62,5 +66,13 @@ export class Denizen extends Model {
 
 	set favorited(newFavorited: boolean) {
 		this._favorited = newFavorited;
+	}
+
+	get favoriteNumber(): number {
+		return this._favoriteNumber;
+	}
+
+	set favoriteNumber(newFavoriteNumber: number) {
+		this._favoriteNumber = newFavoriteNumber;
 	}
 }
